@@ -1,13 +1,11 @@
 pipeline{
  agent any
- environment {
-    ANYPOINT = credentials('ANYPOINTDEVOPS')
- }
+
  stages {
  	stage ('Build'){
  		steps {
  			withMaven(maven:'maven'){
- 				sh 'mvn -f mulesoftfourcicdpoc/pom.xml clean install'
+ 		                sh 'mvn -f mulesoftfourcicdpoc/pom.xml clean install'
  			}
  		}
  	}
