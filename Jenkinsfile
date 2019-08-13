@@ -1,21 +1,28 @@
-pipeline{
- agent any
+pipeline {
 
- stages {
- 	stage ('Build'){
- 		steps {
- 			withMaven(maven:'maven'){
- 		                sh 'mvn -f mulesoftfourcicdpoc/pom.xml clean install'
- 			}
- 		}
- 	}
- 	stage ('Deploy'){
- 		steps {
- 			withMaven(maven:'maven'){
- 				sh 'mvn -f mulesoftfourcicdpoc/pom.xml package deploy  -Dusername=$ANYPOINT_USR -Dpassword=$ANYPOINT_PSW -Denvironment=Development -DmuleDeploy'
- 			}
- 		}
- 	}
- }
+    agent any
+    tools {
+        maven 'Maven_3.5.2' 
+    }
+    stages {
+        stage('Compile stage') {
+            steps {
+                bat "mvn clean compile" 
+        }
+    }
+
+         stage('testing stage') {
+             steps {
+                bat "mvn test"
+        }
+    }
+
+          stage('deployment stage') {
+              steps {
+                bat "mvn deploy"
+        }
+    }
+
+  }
 
 }
