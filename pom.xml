@@ -30,7 +30,76 @@
 			</plugin>
 		</plugins>
 	</build>
-
+<profiles>
+	<profile>
+		<id>dev</id>
+		<build>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<configuration>
+						<skip>true</skip>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.mule.tools.maven</groupId>
+					<artifactId>mule-maven-plugin</artifactId>
+					<version>${mule.maven.plugin.version}</version>
+					<configuration>
+						<cloudHubDeployment>
+							<muleVersion>${app.runtime}</muleVersion>
+							<username>${anypoint.username}</username>
+							<password>${anypoint.password}</password>
+							<workerType>Micro</workerType>
+							<applicationName>CRAFT-CICD-POC</applicationName>
+							<environment>Sandbox</environment>
+							<properties>
+								<https.port>1443</https.port>
+							</properties>
+						</cloudHubDeployment>
+					</configuration>
+					<executions>
+						<execution>
+							<id>deploy</id>
+							<phase>deploy</phase>
+							<goals>
+								<goal>deploy</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>build-helper-maven-plugin</artifactId>
+					<version>1.7</version>
+					<executions>
+						<execution>
+							<id>add-resource</id>
+							<phase>generate-resources</phase>
+							<goals>
+								<goal>add-resource</goal>
+							</goals>
+							<configuration>
+								<resources>
+									<resource>
+										<directory>src/main/app/</directory>
+									</resource>
+									<resource>
+										<directory>src/main/api/</directory>
+									</resource>
+									<resource>
+										<directory>mappings/</directory>
+									</resource>
+								</resources>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+			</plugins>
+		</build>
+	</profile>
+</profiles>
 	<dependencies>
         <dependency>
             <groupId>org.mule.connectors</groupId>
@@ -71,5 +140,5 @@
             </snapshots>
         </pluginRepository>
     </pluginRepositories>
-
+	
 </project>
