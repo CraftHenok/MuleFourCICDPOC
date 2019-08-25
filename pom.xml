@@ -52,7 +52,7 @@
 							<username>${anypoint.username}</username>
 							<password>${anypoint.password}</password>
 							<workerType>Micro</workerType>
-							<applicationName>CRAFT-CICD-POC</applicationName>
+							<applicationName>craft-js-cicd-demo-sandbox</applicationName>
 							<environment>Sandbox</environment>
 							<properties>
 								<https.port>1443</https.port>
@@ -100,6 +100,7 @@
 		</build>
 	</profile>
 </profiles>
+
 	<dependencies>
         <dependency>
             <groupId>org.mule.connectors</groupId>
@@ -129,6 +130,7 @@
             <layout>default</layout>
         </repository>
     </repositories>
+	
     <pluginRepositories>
         <pluginRepository>
             <id>mulesoft-releases</id>
