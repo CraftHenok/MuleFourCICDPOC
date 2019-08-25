@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="b1052f6c-10d8-446d-81b2-018472ee3b84" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="mulesoftfourcicdpocFlow" doc:id="bc18c6d2-9c84-4c4f-a2d8-d87931de61b3" >
+		<http:listener doc:name="Listener" doc:id="ed241376-f3ca-4937-80c4-0f932003eb68" config-ref="HTTP_Listener_config" path="/test"/>
+		<set-payload value='#["CICD in Action POC"]' doc:name="Set Payload" doc:id="68178623-779e-4fb2-a5f9-6c27102737d3" />
+	</flow>
+</mule>
