@@ -52,7 +52,7 @@
 							<username>${anypoint.username}</username>
 							<password>${anypoint.password}</password>
 							<workerType>Micro</workerType>
-							<applicationName>craft-js-cicd-demo-sandbox</applicationName>
+							<applicationName>craft-cicd-demo</applicationName>
 							<environment>Sandbox</environment>
 							<properties>
 								<https.port>1443</https.port>
