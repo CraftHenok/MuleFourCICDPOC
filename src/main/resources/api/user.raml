@@ -1,0 +1,46 @@
+#%RAML 1.0
+title: capstone project
+version: 1.0
+baseUri: http://localhost:8081
+
+/users:
+  get:
+    description: get all user
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              [{
+                  "id": 1,
+                  "first": "Adam",
+                  "last": "Bob",
+                  "department": "IIB"
+                }]
+  post:
+    body:
+      application/json:
+        example:
+          {
+            "first": "Adam",
+            "last": "Bob",
+            "department": "IIB"
+          }
+  /{id}:
+    get:
+      description: Find a user
+    delete:
+      description: delete a user
+  put:
+      description: update a single user
+      responses:
+        200:
+          body:
+            application/json:
+              example:
+                [{
+                    "id": 1,
+                    "first": "Adam",
+                    "last": "Bob",
+                    "department": "IIB"
+                  }]
