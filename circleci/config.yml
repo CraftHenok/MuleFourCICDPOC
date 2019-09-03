@@ -36,6 +36,6 @@ jobs:
           paths:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
-
+      - run: mvn deploy -Danypoint.username=CraftHenok -Danypoint.password=Craft1  -Pdev
       # run tests!
       - run: mvn integration-test
